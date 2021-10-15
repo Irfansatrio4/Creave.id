@@ -3,7 +3,6 @@ import DefaultNavbar from "../component/DefaultNavbar";
 import Image from "@material-tailwind/react/Image";
 import DefaultFooter from "../component/DefaultFooter";
 
-
 function Login() {
   return (
     <div>
@@ -51,11 +50,8 @@ function Login() {
                 Masuk
               </button>
             </div>
-            <div className="py-2 px-4 text-md text-black text-center" >
-            <a href="/Regis">
-              {" "}
-              Belum punya akun ?{" "}
-            </a>
+            <div className="py-2 px-4 text-md text-black text-center">
+              <a href="/Regis"> Belum punya akun ? </a>
             </div>
           </form>
         </div>
