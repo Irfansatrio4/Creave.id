@@ -3,9 +3,9 @@ import AlasanCard from "./AlasanCard";
 
 export default function Alasan() {
   return (
-    <div>
-      <div className=" container max-w-7xl mx-auto px-4 grid grid-cols-2 bg-grey-800 grid-row-2 items-center mt-10">
-        <div className="grid grid-rows-2 ">
+    <div className="bg-gray-100">
+      <div className=" container px-20 grid grid-cols-2  grid-row-2 items-center pt-10">
+        <div className="grid grid-rows-2 w-11/12">
           <div className="flex items-center text-4xl text-black font-bold">
             <p>Kenapa Memilih creave.id ?</p>
           </div>

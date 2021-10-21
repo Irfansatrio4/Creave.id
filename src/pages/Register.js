@@ -1,6 +1,5 @@
 import React from "react";
-import DefaultNavbar from "../component/DefaultNavbar";
-import DefaultFooter from "../component/DefaultFooter";
+import HeaderNav from "../component/Login/HeaderNav";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
@@ -23,7 +22,7 @@ function Register() {
 
   return (
     <div>
-      <DefaultNavbar />
+      <HeaderNav />
       <div className="min-h-screen bg-gray-50 flex flex-col justify-center">
         <div className="max-w-md w-full mx-auto"></div>
         <div className="max-w-md w-full mx-auto mt-4 bg-white p-8 border border-gray-300">
@@ -101,7 +100,7 @@ function Register() {
             </div>
             <div>
               <button
-                className="w-full py-2 px-4 bg-yellow-500 hover:bg-blue-700 rounded-md text-white text-small"
+                className="w-full py-2 px-4 bg-yellow-500 hover:shadow-md rounded-md text-white text-small"
                 type="submit"
               >
                 Mendaftar
@@ -113,7 +112,6 @@ function Register() {
           </form>
         </div>
       </div>
-      <DefaultFooter />
     </div>
   );
 }
