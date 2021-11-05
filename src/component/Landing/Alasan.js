@@ -4,7 +4,7 @@ import AlasanCard from "./AlasanCard";
 export default function Alasan() {
   return (
     <div className="bg-gray-100">
-      <div className=" container px-20 grid grid-cols-2  grid-row-2 items-center pt-10">
+      <div className=" container px-20 grid grid-cols-2 w-11/12 mx-auto grid-row-2 items-center pt-10">
         <div className="grid grid-rows-2 w-11/12">
           <div className="flex items-center text-4xl text-black font-bold">
             <p>Kenapa Memilih creave.id ?</p>
@@ -20,7 +20,7 @@ export default function Alasan() {
             </p>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-y-9 gap-x-20 ml-10">
+        <div className="grid grid-cols-2 gap-y-4 gap-x-20 ml-10 pb-8">
           <div>
             <AlasanCard title="alasan 1">
               Divide details about your product or agency work into parts. A

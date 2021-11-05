@@ -11,7 +11,7 @@ function DefaultNavbar() {
         <div className="w-5/6  flex justify-end">
           <ul className="flex justify-around font-nunito text-base w-5/6 ">
             <li>
-              <Link to="/#">Event</Link>
+              <Link to="/event">Event</Link>
             </li>
             <li>
               <Link to="/Gallery">Gallery</Link>
@@ -21,6 +21,9 @@ function DefaultNavbar() {
             </li>
             <li>
               <Link to="/Help">Help</Link>
+            </li>
+            <li>
+              <Link to="/profile">Profile</Link>
             </li>
             <li>
               <Link to="/Login"> Login </Link>

@@ -1,8 +1,25 @@
 import React from "react";
 import HeaderNav from "../component/Login/HeaderNav";
 import Image from "@material-tailwind/react/Image";
+import axios from "axios";
+import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
 
 function Login() {
+  let history = useHistory();
+  const { register, handleSubmit } = useForm();
+  const handleLogin = (data) => {
+    console.log(data);
+    axios
+      .post("http://localhost:5000/api/user/login", data)
+      .then(() => {
+        // console.log(response)
+        history.push("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div>
       <HeaderNav />
@@ -19,7 +36,11 @@ function Login() {
                 className="content-center"
               />
             </div>
-            <form action="" className="space-y-6">
+            <form
+              action=""
+              className="space-y-6"
+              onSubmit={handleSubmit(handleLogin)}
+            >
               <div>
                 <label
                   className="text-sm font-bold text-gray-600 block"
@@ -30,6 +51,8 @@ function Login() {
                 <input
                   type="text"
                   className="w-full p-2 border border-gray-300 rounded mt-1"
+                  name="username"
+                  {...register("username")}
                 />
               </div>
               <div>
@@ -42,10 +65,15 @@ function Login() {
                 <input
                   type="password"
                   className="w-full p-2 border border-gray-300 rounded mt-1"
+                  name="password"
+                  {...register("password")}
                 />
               </div>
               <div>
-                <button className="w-full py-2 px-4 bg-yellow-500 hover:shadow-md rounded-md text-white text-small">
+                <button
+                  className="w-full py-2 px-4 bg-yellow-500 hover:shadow-md rounded-md text-white text-small"
+                  type="submit"
+                >
                   Masuk
                 </button>
               </div>

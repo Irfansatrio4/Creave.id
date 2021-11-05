@@ -9,15 +9,15 @@ function Register() {
   const { register, handleSubmit } = useForm();
   const handleRegis = (data) => {
     console.log(data);
-    // axios
-    //   .post(link, data)
-    //   .then(() => {
-    //     // console.log(response)
-    //     history.push("/Landing");
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    axios
+      .post("http://localhost:5000/api/user/register", data)
+      .then(() => {
+        // console.log(response)
+        history.push("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -38,8 +38,8 @@ function Register() {
               <input
                 type="text"
                 className="w-full p-2 border border-gray-300 rounded mt-1"
-                name="nama"
-                {...register("nama")}
+                name="fullname"
+                {...register("fullname")}
               />
             </div>
             <div>
@@ -52,8 +52,8 @@ function Register() {
               <input
                 type="text"
                 className="w-full p-2 border border-gray-300 rounded mt-1"
-                name="phone"
-                {...register("phone")}
+                name="phone_number"
+                {...register("phone_number")}
               />
             </div>
             <div>

@@ -27,9 +27,7 @@ export default function OrderNow() {
               nisi felis fringilla velit, a gravida nulla elit quis ipsum.
             </p>
           </div>
-          <div>
-            Button
-          </div>
+          <div>Button</div>
         </div>
       </div>
     </div>
