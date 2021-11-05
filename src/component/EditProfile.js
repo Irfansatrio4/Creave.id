@@ -3,9 +3,9 @@ import React from "react";
 function EditProfile() {
   return (
     <div className="bg-gray-100 py-20">
-      <div className="w-9/12 mx-auto bg-white grid grid-cols-2 shadow-md p-5">
+      <div className="w-9/12 mx-auto bg-white grid grid-cols-4 shadow-md p-5">
         <div className="w-4/12 ">gambar</div>
-        <div className="grid grid-rows-3 items-center">
+        <div className="grid grid-rows-3 items-center col-span-2">
           <div className="flex  text-4xl text-black font-bold">
             <p> Full Name </p>
           </div>

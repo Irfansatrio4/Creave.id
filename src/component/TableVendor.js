@@ -1,43 +1,19 @@
-import React from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 
 function TableVendor() {
-  const customers = [
-    {
-      id: "0",
-      name: "Sumber Cahaya",
-      email: "Jl. Buah Batu Raya no 20",
-      telp: "08123659984",
-      spent: "Tempat Penyewaan Lampu tembak",
-    },
-    {
-      id: "1",
-      name: "Tenda Biru",
-      email: "Jl. Jambi Raya no 12",
-      telp: "082156448897",
-      spent: "Penyewaan tenda dan dekorasi",
-    },
-    {
-      id: "2",
-      name: "Tenda Biru",
-      email: "Jl. Jambi Raya no 12",
-      telp: "082156448897",
-      spent: "Penyewaan tenda dan dekorasi",
-    },
-    {
-      id: "3",
-      name: "Tenda Biru",
-      email: "Jl. Jambi Raya no 12",
-      telp: "082156448897",
-      spent: "Penyewaan tenda dan dekorasi",
-    },
-    {
-      id: "4",
-      name: "Tenda Biru",
-      email: "Jl. Jambi Raya no 12",
-      telp: "082156448897",
-      spent: "Penyewaan tenda dan dekorasi",
-    },
-  ];
+  const [list, setlist] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/admin/vendor")
+      .then((response) => {
+        setlist(response.data.response);
+        console.log(list);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
 
   return (
     <div>
@@ -65,26 +41,26 @@ function TableVendor() {
           </thead>
           {/* TabelGaleri body */}
           <tbody className="text-sm divide-y divide-gray-100">
-            {customers.map((customer) => {
+            {list.map((vendor) => {
               return (
-                <tr key={customer.id}>
+                <tr key={vendor._id}>
                   <td className="p-2 whitespace-nowrap">
                     <div className="items-center">
                       <div className="font-medium text-gray-800 text-center">
-                        {customer.name}
+                        {vendor.vendorname}
                       </div>
                     </div>
                   </td>
                   <td className="p-2 whitespace-nowrap">
-                    <div className="text-center">{customer.email}</div>
+                    <div className="text-center">{vendor.address}</div>
                   </td>
                   <td className="p-2 whitespace-nowrap">
                     <div className="text-center font-medium text-gray-800">
-                      {customer.spent}
+                      {vendor.description}
                     </div>
                   </td>
                   <td className="p-2 whitespace-nowrap">
-                    <div className="text-center">{customer.telp}</div>
+                    <div className="text-center">{vendor.phone_number}</div>
                   </td>
                   <td className="p-2 whitespace-nowrap text-center">
                     <button class="border-3 border-light-blue-500 border-opacity-100 py-2 px-2 mx-2 rounded text-blue-500">

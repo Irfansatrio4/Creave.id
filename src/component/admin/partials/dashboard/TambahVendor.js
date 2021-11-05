@@ -1,9 +1,23 @@
 import React from "react";
 import { useHistory } from "react-router";
 import axios from "axios";
+import { useForm } from "react-hook-form";
 
 function TambahVendor() {
   const history = useHistory();
+  const { register, handleSubmit } = useForm();
+  const addVendor = (data) => {
+    console.log(data);
+    axios
+      .post("http://localhost:5000/api/admin/addVendor", data)
+      .then(() => {
+        history.push("/admin/vendor");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  
 
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-12 bg-white shadow-lg rounded-sm border border-gray-200">
@@ -14,7 +28,7 @@ function TambahVendor() {
         </header>
         <div className="p-3">
           {/* Table */}
-          <form>
+          <form onSubmit={handleSubmit(addVendor)}>
             <div className="overflow-x-auto">
               <div className="App">
                 <div className="grid gap-y-4 p-8">
@@ -29,6 +43,8 @@ function TambahVendor() {
                       type="text"
                       className="w-full p-2 border border-gray-200 rounded mt-4"
                       placeholder="Masukkan nama vendor..."
+                      name="vendorname"
+                      {...register("vendorname")}
                     ></input>
                   </div>
                   <div className="w-full">
@@ -42,6 +58,8 @@ function TambahVendor() {
                       type="text"
                       className="w-full p-2 border border-gray-200 rounded mt-4"
                       placeholder="Masukkan alamat vendor..."
+                      name="address"
+                      {...register("address")}
                     ></input>
                   </div>
                   <div className="w-full">
@@ -55,6 +73,8 @@ function TambahVendor() {
                       type="text"
                       className="w-full p-2 border border-gray-200 rounded mt-4"
                       placeholder="Masukkan no telepon..."
+                      name="phone_number"
+                      {...register("phone_number")}
                     ></input>
                   </div>
                   <div className="w-full">
@@ -68,6 +88,8 @@ function TambahVendor() {
                       class="w-full px-3 py-2 text-gray-600 border rounded border-gray-200 mt-4 focus:outline-none"
                       rows="4"
                       placeholder="Masukkan deskripsi vendor..."
+                      name="description"
+                      {...register("description")}
                     ></textarea>
                   </div>
 
@@ -93,11 +115,13 @@ function TambahVendor() {
                               fill="#130F26"
                             />
                           </svg>
-
                           <span className="mx-4">Kembali</span>
                         </div>
                       </button>
-                      <button class="hover:shadow-md text-gray-800 bg-blue-900 font-bold mr-4 py-2 px-4 rounded items-center content-center">
+                      <button
+                        class="hover:shadow-md text-gray-800 bg-blue-900 font-bold mr-4 py-2 px-4 rounded items-center content-center"
+                        type="submit"
+                      >
                         <span className="text-white">Simpan</span>
                       </button>
                     </div>
