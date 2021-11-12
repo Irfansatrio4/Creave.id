@@ -5,7 +5,6 @@ import Register from "./pages/Register";
 import Aboutus from "./pages/Aboutus";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Gallery from "./pages/Gallery";
-import detailGallery from "./pages/DetailGallery";
 import Help from "./pages/Help";
 import addGaleri from "./pages/admin/AddGaleri";
 import listEvent from "./pages/ListEvent";
@@ -20,6 +19,7 @@ import FormVendor from "./pages/admin/FormVendor";
 import detailUltah from "./pages/admin/DetailUltah";
 import detailPernikahan from "./pages/admin/DetailPernikahan";
 import detailWebinar from "./pages/admin/DetailWebinar";
+import detailGallery from "./pages/detailGallery";
 
 function App() {
   return (
