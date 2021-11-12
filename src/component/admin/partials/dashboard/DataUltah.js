@@ -1,13 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import moment from "moment";
+import { useHistory, useParams } from "react-router";
 
-function detailUltah() {
+function DataUltah() {
+  const history = useHistory();
+  const [user, setUser] = useState([]);
+  const params = useParams();
+  console.log(params);
+  const [selectStatus, setSelectStatus] = useState();
+
+    useEffect(() => {
+      axios
+        .get(`https://creaveid-api.herokuapp.com/api/admin/birthday/${params.id}`)
+        .then((response) => {
+          setUser(response.data.birthday);
+          console.log(response);      
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
+
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-12 bg-white shadow-lg rounded-sm border border-gray-200">
       {/* Chart built with Chart.js 3 */}
       <div className="col-span-full xl:col-span-6 bg-white rounded-sm border border-gray-200">
         <header className="px-5 py-4 border-b border-gray-100">
           <h2 className="font-semibold text-gray-800">
-            Review Pemesanan Ulang Tahun #1
+            Review Pemesanan Ulang Tahun #{user._id}
           </h2>
         </header>
         <div className="p-3">
@@ -22,10 +43,9 @@ function detailUltah() {
                   >
                     Nama Pengguna
                   </label>
-                  <input
-                    type="text"
-                    className="w-full p-2 border border-gray-200 rounded mt-4"
-                  ></input>
+                  <div className="p-2 text-left text-sm font-semibold mt-2">
+                    {user.fullname}
+                  </div>
                 </div>
                 <div className="w-full">
                   <label
@@ -34,10 +54,9 @@ function detailUltah() {
                   >
                     Tanggal
                   </label>
-                  <input
-                    type="text"
-                    className="w-full p-2 border border-gray-200 rounded mt-4"
-                  ></input>
+                  <div className="p-2 text-left text-sm font-semibold mt-2">
+                    {moment(user.date).format("dddd, D MMMM YYYY")}
+                  </div>
                 </div>
                 <div className="w-full">
                   <label
@@ -46,22 +65,9 @@ function detailUltah() {
                   >
                     No Telp
                   </label>
-                  <input
-                    type="text"
-                    className="w-full p-2 border border-gray-200 rounded mt-4"
-                  ></input>
-                </div>
-                <div className="w-full">
-                  <label
-                    htmlFor=""
-                    className="text-sm font-bold text-gray-600 block text-left"
-                  >
-                    Jenis Acara
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full p-2 border border-gray-200 rounded mt-4"
-                  ></input>
+                  <div className="p-2 text-left text-sm font-semibold mt-2">
+                    {user.phone_number}
+                  </div>
                 </div>
                 <div className="w-full">
                   <label
@@ -70,10 +76,9 @@ function detailUltah() {
                   >
                     Tema
                   </label>
-                  <input
-                    type="text"
-                    className="w-full p-2 border border-gray-200 rounded mt-4"
-                  ></input>
+                  <div className="p-2 text-left text-sm font-semibold mt-2">
+                    {user.theme}
+                  </div>
                 </div>
                 <div className="w-full">
                   <label
@@ -82,10 +87,9 @@ function detailUltah() {
                   >
                     Jumlah Orang
                   </label>
-                  <input
-                    type="text"
-                    className="w-full p-2 border border-gray-200 rounded mt-4"
-                  ></input>
+                  <div className="p-2 text-left text-sm font-semibold mt-2">
+                    {user.guest}
+                  </div>
                   <div className="w-full">
                     <label
                       htmlFor=""
@@ -93,10 +97,9 @@ function detailUltah() {
                     >
                       Jenis Konsumsi
                     </label>
-                    <input
-                      type="text"
-                      className="w-full p-2 border border-gray-200 rounded mt-4"
-                    ></input>
+                    <div className="p-2 text-left text-sm font-semibold mt-2">
+                      {user.foodType}
+                    </div>
                   </div>
                 </div>
                 <div className="w-full">
@@ -106,10 +109,9 @@ function detailUltah() {
                   >
                     Jumlah Konsumsi
                   </label>
-                  <input
-                    type="text"
-                    className="w-full p-2 border border-gray-200 rounded mt-4"
-                  ></input>
+                  <div className="p-2 text-left text-sm font-semibold mt-2">
+                    {user.foodTotal}
+                  </div>
                 </div>
                 <div className="w-full">
                   <label
@@ -118,10 +120,9 @@ function detailUltah() {
                   >
                     Entertain
                   </label>
-                  <input
-                    type="text"
-                    className="w-full p-2 border border-gray-200 rounded mt-4"
-                  ></input>
+                  <div className="p-2 text-left text-sm font-semibold mt-2">
+                    {user.entertain}
+                  </div>
                 </div>
                 <div className="w-full">
                   <label
@@ -130,10 +131,9 @@ function detailUltah() {
                   >
                     MC
                   </label>
-                  <input
-                    type="text"
-                    className="w-full p-2 border border-gray-200 rounded mt-4"
-                  ></input>
+                  <div className="p-2 text-left text-sm font-semibold mt-2">
+                    {user.mc}
+                  </div>
                 </div>
                 <div className="w-full">
                   <label
@@ -142,10 +142,9 @@ function detailUltah() {
                   >
                     MUA
                   </label>
-                  <input
-                    type="text"
-                    className="w-full p-2 border border-gray-200 rounded mt-4"
-                  ></input>
+                  <div className="p-2 text-left text-sm font-semibold mt-2">
+                    {user.mua}
+                  </div>
                 </div>
                 <div className="w-full">
                   <label
@@ -154,10 +153,9 @@ function detailUltah() {
                   >
                     Wardrobe
                   </label>
-                  <input
-                    type="text"
-                    className="w-full p-2 border border-gray-200 rounded mt-4"
-                  ></input>
+                  <div className="p-2 text-left text-sm font-semibold mt-2">
+                    {user.wardrobe}
+                  </div>
                 </div>
                 <div className="w-full">
                   <label
@@ -166,10 +164,9 @@ function detailUltah() {
                   >
                     Dokumentasi
                   </label>
-                  <input
-                    type="text"
-                    className="w-full p-2 border border-gray-200 rounded mt-4"
-                  ></input>
+                  <div className="p-2 text-left text-sm font-semibold mt-2">
+                    {user.documentation}
+                  </div>
                 </div>
                 <div className="w-full">
                   <label
@@ -178,10 +175,9 @@ function detailUltah() {
                   >
                     Souvenir
                   </label>
-                  <input
-                    type="text"
-                    className="w-full p-2 border border-gray-200 rounded mt-4"
-                  ></input>
+                  <div className="p-2 text-left text-sm font-semibold mt-2">
+                    {user.souvenir}
+                  </div>
                 </div>
                 <div className="w-full">
                   <label
@@ -190,10 +186,9 @@ function detailUltah() {
                   >
                     Desain Undangan
                   </label>
-                  <input
-                    type="text"
-                    className="w-full p-2 border border-gray-200 rounded mt-4"
-                  ></input>
+                  <div className="p-2 text-left text-sm font-semibold mt-2">
+                    {user.design}
+                  </div>
                 </div>
                 <div className="w-full">
                   <label
@@ -202,10 +197,9 @@ function detailUltah() {
                   >
                     Venue
                   </label>
-                  <input
-                    type="text"
-                    className="w-full p-2 border border-gray-200 rounded mt-4"
-                  ></input>
+                  <div className="p-2 text-left text-sm font-semibold mt-2">
+                    {user.venue}
+                  </div>
                 </div>
                 <div className="w-full">
                   <label
@@ -214,23 +208,11 @@ function detailUltah() {
                   >
                     Total
                   </label>
-                  <input
-                    type="text"
-                    className="w-full p-2 border border-gray-200 rounded mt-4"
-                  ></input>
+                  <div className="p-2 text-left text-sm font-semibold mt-2">
+                    {user.totalPrice}
+                  </div>
                 </div>
-                <div className="w-full">
-                  <label
-                    htmlFor=""
-                    className="text-sm font-bold text-gray-600 block text-left"
-                  >
-                    Catatan
-                  </label>
-                  <textarea
-                    class="w-full px-3 py-2 text-gray-600 border rounded border-gray-200 mt-4 focus:outline-none"
-                    rows="4"
-                  ></textarea>
-                </div>
+
                 <div className="w-full">
                   <label
                     htmlFor=""
@@ -251,7 +233,10 @@ function detailUltah() {
                 {/* Batasan Section Atas */}
                 <div className="w-full px-8 mb-10 mt-10">
                   <div className="grid grid-cols-2">
-                    <button class=" bg-white border border-1 hover:shadow-md text-gray-800 font-bold mr-4 py-2 px-4 rounded items-center content-center">
+                    <button
+                      class=" bg-white border border-1 hover:shadow-md text-gray-800 font-bold mr-4 py-2 px-4 rounded items-center content-center"
+                      onClick={() => history.push("/admin/home")}
+                    >
                       <div className="inline-flex">
                         <svg
                           width="24"
@@ -285,4 +270,4 @@ function detailUltah() {
   );
 }
 
-export default detailUltah;
+export default DataUltah;

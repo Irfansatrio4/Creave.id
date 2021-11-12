@@ -9,7 +9,7 @@ function TambahVendor() {
   const addVendor = (data) => {
     console.log(data);
     axios
-      .post("http://localhost:5000/api/admin/addVendor", data)
+      .post("https://creaveid-api.herokuapp.com/api/admin/addVendor", data)
       .then(() => {
         history.push("/admin/vendor");
       })
@@ -17,7 +17,6 @@ function TambahVendor() {
         console.log(error);
       });
   };
-  
 
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-12 bg-white shadow-lg rounded-sm border border-gray-200">
@@ -28,7 +27,7 @@ function TambahVendor() {
         </header>
         <div className="p-3">
           {/* Table */}
-          <form onSubmit={handleSubmit(addVendor)}>
+          <form>
             <div className="overflow-x-auto">
               <div className="App">
                 <div className="grid gap-y-4 p-8">
@@ -98,7 +97,7 @@ function TambahVendor() {
                     <div className="grid grid-cols-2">
                       <button
                         class=" bg-white border border-1 hover:shadow-md text-gray-800 font-bold mr-4 py-2 px-4 rounded items-center content-center"
-                        onClick={() => history.goBack()}
+                        onClick={() => history.push("/admin/vendor")}
                       >
                         <div className="inline-flex">
                           <svg
@@ -120,7 +119,7 @@ function TambahVendor() {
                       </button>
                       <button
                         class="hover:shadow-md text-gray-800 bg-blue-900 font-bold mr-4 py-2 px-4 rounded items-center content-center"
-                        type="submit"
+                        onClick={handleSubmit(addVendor)}
                       >
                         <span className="text-white">Simpan</span>
                       </button>

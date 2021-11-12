@@ -10,86 +10,21 @@ export default function ListGallery() {
       </div>
 
       <div className="mx-64 grid grid-cols-3 gap-10 justify-items-center pb-32">
-      <Link to="/DetailGallery">
-        <div>
-          <img
-            src={icon}
-            alt="fotomember"
-            className="mx-auto border-8 border-white"
-          />
-          <p className="text-center pt-5 font-bold text-blue-500 text-2xl">
-            Birthday Party Satria
-          </p>
-          <p className="text-center pt-2 font-bold text-gray-500 text-xl">
-            11 Oktober 2021
-          </p>
-        </div>
+        <Link to="/DetailGallery">
+          <div>
+            <img
+              src={icon}
+              alt="fotomember"
+              className="mx-auto border-8 border-white"
+            />
+            <p className="text-center pt-5 font-bold text-blue-500 text-2xl">
+              Birthday Party Satria
+            </p>
+            <p className="text-center pt-2 font-bold text-gray-500 text-xl">
+              11 Oktober 2021
+            </p>
+          </div>
         </Link>
-        {/* <div>
-          <img
-            src={icon}
-            alt="fotomember"
-            className="mx-auto border-8 border-white"
-          />
-          <p className="text-center pt-5 font-bold text-blue-500 text-2xl">
-            Birthday Party Satria
-          </p>
-          <p className="text-center pt-2 font-bold text-gray-500 text-xl">
-            11 Oktober 2021
-          </p>
-        </div>
-        <div>
-          <img
-            src={icon}
-            alt="fotomember"
-            className="mx-auto border-8 border-white"
-          />
-          <p className="text-center pt-5 font-bold text-blue-500 text-2xl">
-            Birthday Party Satria
-          </p>
-          <p className="text-center pt-2 font-bold text-gray-500 text-xl">
-            11 Oktober 2021
-          </p>
-        </div>
-        <div>
-          <img
-            src={icon}
-            alt="fotomember"
-            className="mx-auto border-8 border-white"
-          />
-          <p className="text-center pt-5 font-bold text-blue-500 text-2xl">
-            Birthday Party Satria
-          </p>
-          <p className="text-center pt-2 font-bold text-gray-500 text-xl">
-            11 Oktober 2021
-          </p>
-        </div>
-        <div>
-          <img
-            src={icon}
-            alt="fotomember"
-            className="mx-auto border-8 border-white"
-          />
-          <p className="text-center pt-5 font-bold text-blue-500 text-2xl">
-            Birthday Party Satria
-          </p>
-          <p className="text-center pt-2 font-bold text-gray-500 text-xl">
-            11 Oktober 2021
-          </p>
-        </div>
-        <div>
-          <img
-            src={icon}
-            alt="fotomember"
-            className="mx-auto border-8 border-white"
-          />
-          <p className="text-center pt-5 font-bold text-blue-500 text-2xl">
-            Birthday Party Satria
-          </p>
-          <p className="text-center pt-2 font-bold text-gray-500 text-xl">
-            11 Oktober 2021
-          </p>
-        </div> */}
       </div>
     </div>
   );

@@ -5,18 +5,21 @@ import Register from "./pages/Register";
 import Aboutus from "./pages/Aboutus";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Gallery from "./pages/Gallery";
-import detailGallery from "./pages/detailGallery";
+import detailGallery from "./pages/DetailGallery";
 import Help from "./pages/Help";
 import addGaleri from "./pages/admin/AddGaleri";
 import listEvent from "./pages/ListEvent";
 import pernikahan from "./pages/formEvent/Pernikahan";
 import ulangTahun from "./pages/formEvent/UlangTahun";
-import webinar from "./pages/formEvent/Webinar";
+import webinar from "./pages/formEvent/Web";
 import Profile from "./pages/Profile";
 import Home from "./pages/admin/RequestEO";
 import Vendor from "./pages/admin/Vendor";
 import FormGaleri from "./pages/admin/FormGaleri";
 import FormVendor from "./pages/admin/FormVendor";
+import detailUltah from "./pages/admin/DetailUltah"
+import detailPernikahan from "./pages/admin/DetailPernikahan"
+import detailWebinar from "./pages/admin/DetailWebinar"
 
 function App() {
   return (
@@ -40,6 +43,9 @@ function App() {
         <Route exact path="/admin/vendor/form" component={FormVendor} />
         <Route exact path="/admin/vendor" component={Vendor} />
         <Route exact path="/profile" component={Profile} />
+        <Route exact path="/admin/webinar/detail/:id" component={detailWebinar} />
+        <Route exact path="/admin/pernikahan/detail/:id" component={detailPernikahan} />
+        <Route exact path="/admin/ultah/detail/:id" component={detailUltah} />
       </Switch>
     </Router>
   );

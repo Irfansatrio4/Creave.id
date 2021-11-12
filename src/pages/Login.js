@@ -4,17 +4,21 @@ import Image from "@material-tailwind/react/Image";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
+import Cookies from "js-cookie";
 
 function Login() {
   let history = useHistory();
   const { register, handleSubmit } = useForm();
   const handleLogin = (data) => {
-    console.log(data);
+    // console.log(data);
     axios
-      .post("http://localhost:5000/api/user/login", data)
-      .then(() => {
-        // console.log(response)
+      .post("https://creaveid-api.herokuapp.com/api/user/login", data)
+      .then((response) => {
+        Cookies.set("fullname", response.data.others.fullname);
+        Cookies.set("phone_number", response.data.others.phone_number);
+        Cookies.set("token", response.data.accessToken);
         history.push("/");
+        console.log(response);
       })
       .catch((error) => {
         console.log(error);

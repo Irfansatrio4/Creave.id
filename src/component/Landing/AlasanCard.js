@@ -6,7 +6,7 @@ import Paragraph from "@material-tailwind/react/Paragraph";
 
 export default function AlasanCard({ title, children }) {
   return (
-    <div className="w-80 flex justify-center text-justify">
+    <div className="w-80 flex justify-center text-left">
       <Card>
         <CardBody>
           <H6 color="gray">{title}</H6>

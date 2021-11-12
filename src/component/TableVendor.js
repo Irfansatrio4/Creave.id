@@ -5,7 +5,7 @@ function TableVendor() {
   const [list, setlist] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/admin/vendor")
+      .get("https://creaveid-api.herokuapp.com/api/admin/vendor")
       .then((response) => {
         setlist(response.data.response);
         console.log(list);
@@ -14,6 +14,16 @@ function TableVendor() {
         console.log(err);
       });
   });
+  function handleDelete(id) {
+    axios
+      .post(`https://creaveid-api.herokuapp.com/api/admin/deleteVendor/${id}`)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   return (
     <div>
@@ -63,10 +73,10 @@ function TableVendor() {
                     <div className="text-center">{vendor.phone_number}</div>
                   </td>
                   <td className="p-2 whitespace-nowrap text-center">
-                    <button class="border-3 border-light-blue-500 border-opacity-100 py-2 px-2 mx-2 rounded text-blue-500">
-                      View
-                    </button>
-                    <button class="border-3 border-red-500 border-opacity-100 py-2 px-2 rounded text-red-500">
+                    <button
+                      class="border-3 border-red-500 border-opacity-100 py-2 px-2 rounded text-red-500"
+                      onClick={() => handleDelete(vendor._id)}
+                    >
                       Delete
                     </button>
                   </td>

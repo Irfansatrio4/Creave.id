@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 function Table() {
+  // const [user, setUser] = useState([]);
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:5000/api/admin/vendor")
+  //     .then((response) => {
+  //       set(response.data.response);
+  //       console.log(user);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // });
   const customers = [
     {
       id: "0",
@@ -50,9 +63,6 @@ function Table() {
                 <div className="font-semibold text-center">Tanggal Acara</div>
               </th>
               <th className="p-2 whitespace-nowrap">
-                <div className="font-semibold text-center">Jenis Acara</div>
-              </th>
-              <th className="p-2 whitespace-nowrap">
                 <div className="font-semibold text-center">Total Harga</div>
               </th>
               <th className="p-2 whitespace-nowrap">
@@ -84,11 +94,6 @@ function Table() {
                   <td className="p-2 whitespace-nowrap">
                     <div className="text-center font-medium text-gray-800">
                       {customer.spent}
-                    </div>
-                  </td>
-                  <td className="p-2 whitespace-nowrap">
-                    <div className="text-lg text-center">
-                      {customer.location}
                     </div>
                   </td>
                   <td className="p-2 whitespace-nowrap">

@@ -10,10 +10,10 @@ function Register() {
   const handleRegis = (data) => {
     console.log(data);
     axios
-      .post("http://localhost:5000/api/user/register", data)
+      .post("https://creaveid-api.herokuapp.com/api/user/register", data)
       .then(() => {
         // console.log(response)
-        history.push("/");
+        history.push("/login");
       })
       .catch((error) => {
         console.log(error);
@@ -39,7 +39,7 @@ function Register() {
                 type="text"
                 className="w-full p-2 border border-gray-300 rounded mt-1"
                 name="fullname"
-                {...register("fullname")}
+                {...register("fullname", { required: true })}
               />
             </div>
             <div>
@@ -53,7 +53,7 @@ function Register() {
                 type="text"
                 className="w-full p-2 border border-gray-300 rounded mt-1"
                 name="phone_number"
-                {...register("phone_number")}
+                {...register("phone_number", { required: true })}
               />
             </div>
             <div>
@@ -67,7 +67,7 @@ function Register() {
                 type="text"
                 className="w-full p-2 border border-gray-300 rounded mt-1"
                 nama="email"
-                {...register("email")}
+                {...register("email", { required: true })}
               />
             </div>
             <div>
@@ -81,7 +81,7 @@ function Register() {
                 type="text"
                 className="w-full p-2 border border-gray-300 rounded mt-1"
                 name="username"
-                {...register("username")}
+                {...register("username", { required: true })}
               />
             </div>
             <div>
@@ -95,7 +95,7 @@ function Register() {
                 type="password"
                 className="w-full p-2 border border-gray-300 rounded mt-1"
                 name="password"
-                {...register("password")}
+                {...register("password", { required: true })}
               />
             </div>
             <div>

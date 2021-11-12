@@ -21,6 +21,9 @@ export default function Greatings() {
           <div className="flex items-center text-4xl text-black font-bold">
             <p>Creave.id untuk acara yang mengesankan</p>
           </div>
+          <div className="flex items-center text-xl text-black pt-5 ">
+            <p>Kebutuhan event kamu akan dibuat mengesankan</p>
+          </div>
         </div>
       </div>
     </div>

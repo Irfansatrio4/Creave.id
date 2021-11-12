@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useHistory } from "react-router";
 import DefaultFooter from "../../component/DefaultFooter";
 import DefaultNavbar from "../../component/DefaultNavbar";
+import Cookies from "js-cookie";
+import axios from "axios";
 
 function UlangTahun() {
   const history = useHistory();
@@ -15,6 +17,9 @@ function UlangTahun() {
   const [selectSouvenir, setselectSouvenir] = useState(1000000);
   const [selectDesign, setselectDesign] = useState(2500000);
   const [venue, setvenue] = useState(15000000);
+  const [date, setdate] = useState();
+  const [theme, settheme] = useState();
+  const [guest, setGuest] = useState();
 
   const total =
     Number(selectMakanan) +
@@ -28,6 +33,39 @@ function UlangTahun() {
     Number(selectDesign) +
     Number(venue);
 
+  const fullname = Cookies.get("fullname");
+  const phone_number = Cookies.get("phone_number");
+
+  const hasil = {
+    date: date,
+    theme: theme,
+    guest: guest,
+    foodType: selectMakanan,
+    foodTotal: jumlahKomsumsi,
+    entertaiment: entertaiment,
+    mc: jumlahMc,
+    mua: selectMua,
+    wardrobe: selectWardrobe,
+    documentation: selectDokumentasi,
+    souvenir: selectSouvenir,
+    design: selectDesign,
+    totalPrice: total,
+    fullname: fullname,
+    phone_number: phone_number,
+  };
+
+  const submitForm = () => {
+    axios
+      .post("https://creaveid-api.herokuapp.com/api/admin/addBirthday", hasil)
+      .then(() => {
+        console.log(hasil);
+        history.push("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <>
       <DefaultNavbar />
@@ -35,7 +73,7 @@ function UlangTahun() {
         {/* Chart built with Chart.js 3 */}
         <div className="col-span-full xl:col-span-6 rounded-sm">
           <div class="pt-16 pb-12">
-            <h1 className="text-4xl font-bold text-center">Pernikahan</h1>
+            <h1 className="text-4xl font-bold text-center">Birthday Party </h1>
           </div>
           <div className="grid gap-y-4 lg:mx-96 md:mx-60 sm:mx-px">
             {/* Table */}
@@ -52,6 +90,9 @@ function UlangTahun() {
                     <input
                       type="date"
                       className="w-full p-2 border border-gray-200 rounded mt-4"
+                      name="date"
+                      value={date}
+                      onChange={(e) => setdate(e.target.value)}
                     ></input>
                   </div>
                   <div className="w-full">
@@ -64,6 +105,9 @@ function UlangTahun() {
                     <input
                       type="text"
                       className="w-full p-2 border border-gray-200 rounded mt-4"
+                      name="theme"
+                      value={theme}
+                      onChange={(e) => settheme(e.target.value)}
                     ></input>
                   </div>
                   <div className="w-full">
@@ -74,8 +118,11 @@ function UlangTahun() {
                       Jumlah Orang
                     </label>
                     <input
-                      type="number"
+                      type="text"
                       className="w-full p-2 border border-gray-200 rounded mt-4"
+                      name="guest"
+                      value={guest}
+                      onChange={(e) => setGuest(e.target.value)}
                     ></input>
                   </div>
                   <div className="w-full mx-auto">
@@ -342,8 +389,11 @@ function UlangTahun() {
                           <span className="mx-4">Kembali</span>
                         </div>
                       </button>
-                      <button class="hover:shadow-md text-gray-800 bg-blue-900 font-bold mr-4 py-2 px-4 rounded items-center content-center">
-                        <span className="text-white">Lanjut</span>
+                      <button
+                        className="hover:shadow-md text-gray-800 bg-blue-900 font-bold mr-4 py-2 px-4 rounded items-center content-center"
+                        onClick={submitForm}
+                      >
+                        <span className="text-white">Order</span>
                       </button>
                     </div>
                   </div>

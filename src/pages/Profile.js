@@ -8,8 +8,11 @@ function Profile() {
   return (
     <>
       <DefaultNavbar />
-      <div>
+      <div className="bg-gray-100">
         <EditProfile />
+        <div className="w-9/12 mx-auto bg-gray-100">
+          <p className="font-bold text-4xl mb-10">List Pemesanan</p>
+        </div>
         <Table />
       </div>
       <DefaultFooter />
