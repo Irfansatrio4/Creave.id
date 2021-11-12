@@ -1,6 +1,8 @@
 {
   "name": "creave.id",
   "version": "0.1.0",
+  "engines": {
+    "node": "14.x"},
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.3.0",
