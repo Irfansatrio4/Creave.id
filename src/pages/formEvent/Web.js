@@ -217,7 +217,7 @@ function Web() {
               <div className="grid grid-cols-2">
                 <button
                   class=" bg-white border border-1 hover:shadow-md text-gray-800 font-bold mr-4 py-2 px-4 rounded items-center content-center"
-                  onClick={() => history.goBack()}
+                  onClick={() => history.push("/event")}
                 >
                   <div className="inline-flex">
                     <svg

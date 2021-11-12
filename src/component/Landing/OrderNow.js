@@ -1,7 +1,10 @@
 import React from "react";
 import Image from "@material-tailwind/react/Image";
+import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 
 export default function OrderNow() {
+  const history = useHistory();
   return (
     <div>
       <div className=" container mx-auto grid grid-cols-2 grid-row-2 items-center pt-10 w-11/12">
@@ -24,9 +27,11 @@ export default function OrderNow() {
               terbaik Anda.
             </p>
           </div>
-          <button className="bg-yellow-500 w-1/5 py-2 rounded-md font-bold uppercase">
-            order Now
-          </button>
+          <Link to="/event">
+            <button className="bg-yellow-500 w-1/5 py-2 rounded-md font-bold uppercase">
+              order Now
+            </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -10,33 +10,33 @@ function DataWebinar() {
   console.log(params);
   const [selectStatus, setSelectStatus] = useState();
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`https://creaveid-api.herokuapp.com/api/admin/webinar/${params.id}`)
-  //     .then((response) => {
-  //       setUser(response.data.webinar);
-  //       console.log(response);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // });
+  useEffect(() => {
+    axios
+      .get(`https://creaveid-api.herokuapp.com/api/admin/webinar/${params.id}`)
+      .then((response) => {
+        setUser(response.data.webinar);
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
 
   const hasil = {
     status: selectStatus,
   };
   console.log(hasil);
 
-  const submitUpdate = (id, data, e) => {
+  const submitUpdate = (data, e) => {
     e.preventDefault();
     axios
       .post(
-        `https://creaveid-api.herokuapp.com/api/admin/statusWebinar/${id}`,
+        `https://creaveid-api.herokuapp.com/api/admin/statusWebinar/${params.id}`,
         data
       )
       .then((response) => {
-        console.log(response);
-        //   history.push("/admin/home");
+        console.log(response.data.updateData);
+        history.push("/admin/home");
       })
       .catch((err) => {
         console.log(err);
