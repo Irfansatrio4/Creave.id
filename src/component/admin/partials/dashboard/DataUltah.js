@@ -10,17 +10,29 @@ function DataUltah() {
   console.log(params);
   const [selectStatus, setSelectStatus] = useState();
 
-    useEffect(() => {
-      axios
-        .get(`https://creaveid-api.herokuapp.com/api/admin/birthday/${params.id}`)
-        .then((response) => {
-          setUser(response.data.birthday);
-          console.log(response);      
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    });
+  useEffect(() => {
+    axios
+      .get(`https://creaveid-api.herokuapp.com/api/admin/birthday/${params.id}`)
+      .then((response) => {
+        setUser(response.data.birthday);
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+
+  function submitUpdate(id) {
+    axios
+      .post(`https://creaveid-api.herokuapp.com/api/admin/statusBirthday/${id}`, )
+      .then(() => {
+        // console.log(hasil);
+        history.push("/admin/home");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-12 bg-white shadow-lg rounded-sm border border-gray-200">
@@ -256,7 +268,10 @@ function DataUltah() {
                         <span className="mx-4">Kembali</span>
                       </div>
                     </button>
-                    <button class="hover:shadow-md text-gray-800 bg-blue-900 font-bold mr-4 py-2 px-4 rounded items-center content-center">
+                    <button
+                      class="hover:shadow-md text-gray-800 bg-blue-900 font-bold mr-4 py-2 px-4 rounded items-center content-center"
+                      onClick={submitUpdate}
+                    >
                       <span className="text-white">Simpan Perubahan</span>
                     </button>
                   </div>

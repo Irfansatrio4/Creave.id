@@ -10,34 +10,38 @@ function DataWebinar() {
   console.log(params);
   const [selectStatus, setSelectStatus] = useState();
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   axios
+  //     .get(`https://creaveid-api.herokuapp.com/api/admin/webinar/${params.id}`)
+  //     .then((response) => {
+  //       setUser(response.data.webinar);
+  //       console.log(response);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // });
+
+  const hasil = {
+    status: selectStatus,
+  };
+  console.log(hasil);
+
+  const submitUpdate = (id, data, e) => {
+    e.preventDefault();
     axios
-      .get(`https://creaveid-api.herokuapp.com/api/admin/webinar/${params.id}`)
+      .post(
+        `https://creaveid-api.herokuapp.com/api/admin/statusWebinar/${id}`,
+        data
+      )
       .then((response) => {
-        setUser(response.data.webinar);
         console.log(response);
+        //   history.push("/admin/home");
       })
       .catch((err) => {
         console.log(err);
       });
-  });
-
-  // const hasil = {
-  //   status: selectStatus,
-  // };
-  // console.log(hasil);
-
-  function submitUpdate(id) {
-    axios
-      .post(`https://creaveid-api.herokuapp.com/api/admin/statusWebinar/${id}`)
-      .then(() => {
-        // console.log(hasil);
-        history.push("/admin/home");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+  };
 
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-12 bg-white shadow-lg rounded-sm border border-gray-200">
@@ -212,7 +216,7 @@ function DataWebinar() {
                       </button>
                       <button
                         class="hover:shadow-md text-gray-800 bg-blue-900 font-bold mr-4 py-2 px-4 rounded items-center content-center"
-                        onClick={submitUpdate}
+                        onClick={(e) => submitUpdate(hasil, e)}
                       >
                         <span className="text-white">Simpan Perubahan</span>
                       </button>

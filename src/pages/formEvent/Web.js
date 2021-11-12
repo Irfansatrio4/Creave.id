@@ -38,11 +38,12 @@ function Web() {
     phone_number: phone_number,
   };
 
-  const submitForm = () => {
+  const submitForm = (data, e) => {
+    e.preventDefault();
     axios
-      .post("https://creaveid-api.herokuapp.com/api/admin/addWebinar", hasil)
-      .then(() => {
-        console.log(hasil);
+      .post("https://creaveid-api.herokuapp.com/api/admin/addWebinar", data)
+      .then((response) => {
+        console.log(response.data.response);
         history.push("/");
       })
       .catch((error) => {
@@ -239,7 +240,7 @@ function Web() {
                 </button>
                 <button
                   class="hover:shadow-md text-gray-800 bg-blue-900 font-bold mr-4 py-2 px-4 rounded items-center content-center"
-                  onClick={submitForm}
+                  onClick={(e) => submitForm(hasil, e)}
                 >
                   <span className="text-white">Order</span>
                 </button>
@@ -247,7 +248,7 @@ function Web() {
             </div>
           </form>
         </div>
-      </div>    
+      </div>
       <DefaultFooter />
     </>
   );
