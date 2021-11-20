@@ -6,11 +6,13 @@ import { useForm } from "react-hook-form";
 function TambahVendor() {
   const history = useHistory();
   const { register, handleSubmit } = useForm();
+
   const addVendor = (data) => {
     console.log(data);
     axios
       .post("https://creaveid-api.herokuapp.com/api/admin/addVendor", data)
-      .then(() => {
+      .then((response) => {
+        console.log(response);
         history.push("/admin/vendor");
       })
       .catch((error) => {

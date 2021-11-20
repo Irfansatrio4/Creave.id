@@ -4,19 +4,20 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 
 function TambahGaleri() {
-  let history = useHistory();
+  const history = useHistory();
   const { register, handleSubmit } = useForm();
+
   const addGaleri = (data) => {
     console.log(data);
-    axios
-      .post("https://creaveid-api.herokuapp.com/api/admin/addGallery", data)
-      .then(() => {
-        // console.log(response);
-        history.push("/admin/addgaleri");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    // axios
+    //   .post("https://creaveid-api.herokuapp.com/api/admin/addGallery", data)
+    //   .then((response) => {
+    //     console.log(response.data);
+    //     history.push("/admin/addgaleri");
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
 
   return (
@@ -77,29 +78,6 @@ function TambahGaleri() {
                       {...register("description")}
                     ></textarea>
                   </div>
-                  <label
-                    htmlFor=""
-                    className="text-sm font-bold text-gray-600 block text-left pb-8"
-                  >
-                    Input Halaman Cover
-                  </label>
-                  <div className="w-full h-full overflow-auto flex flex-col border-dashed border-2 border-gray-400 py-12 justify-center items-center">
-                    <div>
-                      <input
-                        type="file"
-                        name="imageCover"
-                        {...register("imageCover")}
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    {/* <button className=" mt-4 hover:shadow-md text-white bg-blue-600 font-bold mr-4 py-2 px-4 rounded inline-flex">
-                      submit
-                    </button> */}
-                  </div>
-                  <span className="text-sm text-gray-600">
-                    <b>*</b>format jpeg & png
-                  </span>
                   <div className="w-full">
                     <label
                       htmlFor=""
@@ -114,9 +92,8 @@ function TambahGaleri() {
                       <header className="border-dashed border-2 border-gray-400 py-12 flex flex-col justify-center items-center">
                         <input
                           type="file"
-                          name="imageGallery"
-                          multiple
-                          {...register("imageGallery")}
+                          name="imageCover"
+                          {...register("imageCover")}
                         />
                       </header>
                     </section>

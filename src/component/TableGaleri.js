@@ -50,7 +50,7 @@ function TableGaleri() {
           <tbody className="text-sm divide-y divide-gray-100">
             {list.map((galeri) => {
               return (
-                <tr key={galeri.id}>
+                <tr key={galeri._id}>
                   <td className="p-2 whitespace-nowrap">
                     <div className="items-center">
                       <div className="font-medium text-gray-800 text-center">
