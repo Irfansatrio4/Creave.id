@@ -8,6 +8,7 @@ import ModalBody from "@material-tailwind/react/ModalBody";
 import ModalFooter from "@material-tailwind/react/ModalFooter";
 import Button from "@material-tailwind/react/Button";
 import { useParams } from "react-router";
+import swal from "sweetalert";
 
 function Table() {
   const [user, setUser] = useState([]);
@@ -29,6 +30,11 @@ function Table() {
     axios
       .post(`https://creaveid-api.herokuapp.com/api/user/${bukti}/${id}`, data)
       .then((response) => {
+        swal({
+          title: "Upload bukti pembayaran berhasil",
+          text: "Anda akan dihubungi oleh admin untuk proses selanjutnya",
+          icon: "success",
+        });
         console.log(response);
       })
       .catch((err) => {

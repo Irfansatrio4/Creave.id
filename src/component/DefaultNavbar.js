@@ -2,12 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../component/img/logonav.png";
 import Cookies from "js-cookie";
-
+import swal from "sweetalert";
 function DefaultNavbar() {
   const loged = Cookies.get("token");
-  
 
   function logOut() {
+    swal({
+      title: "Log out berhasil",
+      icon: "success",
+    });
     Cookies.remove("token");
     window.location.reload();
   }

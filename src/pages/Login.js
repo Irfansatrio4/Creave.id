@@ -5,6 +5,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
+import swal from "sweetalert";
 
 function Login() {
   let history = useHistory();
@@ -14,6 +15,10 @@ function Login() {
     axios
       .post("https://creaveid-api.herokuapp.com/api/user/login", data)
       .then((response) => {
+        swal({
+          title: "Login Berhasil",
+          icon: "success",
+        });
         Cookies.set("fullname", response.data.others.fullname);
         Cookies.set("phone_number", response.data.others.phone_number);
         Cookies.set("token", response.data.accessToken);
@@ -21,6 +26,12 @@ function Login() {
         console.log(response);
       })
       .catch((error) => {
+        swal({
+          title: "Username atau Password salah",
+          text: "Harap input username atau password dengan benar !",
+          icon: "error",
+          button: "Ok !",
+        });
         console.log(error);
       });
   };

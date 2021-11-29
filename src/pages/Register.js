@@ -4,6 +4,8 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 
+import swal from "sweetalert";
+
 function Register() {
   let history = useHistory();
   const { register, handleSubmit } = useForm();
@@ -12,10 +14,21 @@ function Register() {
     axios
       .post("https://creaveid-api.herokuapp.com/api/user/register", data)
       .then(() => {
+        swal({
+          title: "Register Berhasil",
+          text: "Harap login untuk mulai menggunakan aplikasi creave.id",
+          icon: "success",
+        });
         // console.log(response)
         history.push("/login");
       })
       .catch((error) => {
+        swal({
+          title: "Harap isi semua data",
+          text: "Beberapa data belum diinputkan !",
+          icon: "error",
+          button: "Ok !",
+        });
         console.log(error);
       });
   };

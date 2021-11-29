@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import swal from "sweetalert";
 
 function TableVendor() {
   const [list, setlist] = useState([]);
@@ -18,6 +19,10 @@ function TableVendor() {
     axios
       .post(`https://creaveid-api.herokuapp.com/api/admin/deleteVendor/${id}`)
       .then((response) => {
+        swal({
+          title: "Data berhasil dihapus !",
+          icon: "warning",
+        });
         console.log(response);
       })
       .catch((err) => {
