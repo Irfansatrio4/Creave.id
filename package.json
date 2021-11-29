@@ -2,7 +2,8 @@
   "name": "creave.id",
   "version": "0.1.0",
   "engines": {
-    "node": "14.x"},
+    "node": "14.x"
+  },
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.3.0",
@@ -13,6 +14,7 @@
     "axios": "^0.23.0",
     "js-cookie": "^3.0.1",
     "moment": "^2.29.1",
+    "postcss": "^7.0.39",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.17.4",
@@ -21,9 +23,9 @@
     "react-scripts": "4.0.3",
     "react-table": "^7.7.0",
     "react-transition-group": "^4.4.2",
-    "web-vitals": "^1.1.2",
+    "sweetalert": "^2.1.2",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
-    "postcss": "^7.0.39"
+    "web-vitals": "^1.1.2"
   },
   "scripts": {
     "start": "craco start",
@@ -51,6 +53,5 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.8.8"
-    
   }
 }

@@ -232,6 +232,17 @@ function DataUltah() {
                     {user.totalPrice}
                   </div>
                 </div>
+                <div className="w-full">
+                  <label
+                    htmlFor=""
+                    className="text-sm font-bold text-gray-600 block text-left"
+                  >
+                    payment
+                  </label>
+                  <div className="p-2 text-left text-sm font-semibold mt-2">
+                    <img className="w-40 h-auto" src={user.provePayment?.url} />
+                  </div>
+                </div>
                 <form>
                   <div className="w-full">
                     <label
@@ -278,7 +289,7 @@ function DataUltah() {
 
                           <span className="mx-4">Kembali</span>
                         </div>
-                      </button> 
+                      </button>
                       <button
                         class="hover:shadow-md text-gray-800 bg-blue-900 font-bold mr-4 py-2 px-4 rounded items-center content-center"
                         onClick={(e) => submitUpdate(hasil, e)}

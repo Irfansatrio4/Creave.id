@@ -7,28 +7,28 @@ import ModalHeader from "@material-tailwind/react/ModalHeader";
 import ModalBody from "@material-tailwind/react/ModalBody";
 import ModalFooter from "@material-tailwind/react/ModalFooter";
 import Button from "@material-tailwind/react/Button";
-import { useForm } from "react-hook-form";
 import { useParams } from "react-router";
 
 function Table() {
-  const [user, setUser] = useState(false);
-  const params = useParams();
-  const { register, handleSubmit } = useForm();
+  const [user, setUser] = useState([]);
+  const [image, setImage] = useState(null);
   const getName = Cookies.get("fullname");
+  const [id, setId] = useState("");
   const [showModal, setShowModal] = React.useState(false);
+  const [namaProjek, setNamaProjek] = useState("");
+  const [bukti, setBukti] = useState("");
   const hasil = {
     fullname: getName,
   };
 
-  const addPayment = (data) => {
+  const addPayment = (e) => {
+    e.preventDefault();
+    const data = new FormData();
+    console.log(image);
+    data.append("provePayment", image);
     axios
-      .post(
-        `https://creaveid-api.herokuapp.com/api/user/paymentBirthday/${
-          (params.id, data)
-        }`
-      )
+      .post(`https://creaveid-api.herokuapp.com/api/user/${bukti}/${id}`, data)
       .then((response) => {
-        setUser(response);
         console.log(response);
       })
       .catch((err) => {
@@ -36,17 +36,17 @@ function Table() {
       });
   };
 
-  const handleDataPernikahan = () => {
+  const handleDataProjek = () => {
     axios
-      .post("https://creaveid-api.herokuapp.com/api/user/wedding", hasil)
+      .post(`https://creaveid-api.herokuapp.com/api/user/${namaProjek}`, hasil)
       .then((response) => {
         setUser(response.data.order);
+        console.log(response.data);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  console.log(user);
 
   return (
     <div>
@@ -56,18 +56,36 @@ function Table() {
             <div>
               <button
                 className="bg-blue-900 text-white rounded-md py-1 px-4"
-                onClick={handleDataPernikahan}
+                onClick={(e) => {
+                  handleDataProjek();
+                  setNamaProjek("wedding");
+                  setBukti("paymentWedding");
+                }}
               >
                 Pernikahan
               </button>
             </div>
             <div>
-              <button className="bg-blue-900 text-white rounded-md py-1 px-4">
+              <button
+                className="bg-blue-900 text-white rounded-md py-1 px-4"
+                onClick={(e) => {
+                  handleDataProjek();
+                  setNamaProjek("birthday");
+                  setBukti("paymentBirthday");
+                }}
+              >
                 Ulang Tahun
               </button>
             </div>
             <div>
-              <button className="bg-blue-900 text-white rounded-md py-1 px-8">
+              <button
+                className="bg-blue-900 text-white rounded-md py-1 px-8"
+                onClick={(e) => {
+                  handleDataProjek();
+                  setNamaProjek("webinar");
+                  setBukti("paymentWebinar");
+                }}
+              >
                 Webinar
               </button>
             </div>
@@ -117,7 +135,10 @@ function Table() {
                     <td className="p-2 whitespace-nowrap text-center">
                       <button
                         class="border-3 border-red-500 border-opacity-100 py-2 px-2 rounded text-black font-semibold"
-                        onClick={(e) => setShowModal(true)}
+                        onClick={(e) => {
+                          setId(order._id);
+                          setShowModal(true);
+                        }}
                       >
                         Upload Bukti
                       </button>
@@ -131,12 +152,12 @@ function Table() {
           <ModalHeader toggler={() => setShowModal(false)}>
             Upload Bukti Bayar
           </ModalHeader>
-          <form onSubmit={handleSubmit(addPayment)}>
+          <form onSubmit={addPayment}>
             <ModalBody>
               <input
                 type="file"
                 name="provePayment"
-                {...register("provePayment")}
+                onChange={(e) => setImage(e.target.files[0])}
               ></input>
             </ModalBody>
             <ModalFooter>
@@ -155,7 +176,7 @@ function Table() {
                 ripple="light"
                 type="submit"
               >
-                Save Changes
+                Upload Bukti
               </Button>
             </ModalFooter>
           </form>

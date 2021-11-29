@@ -1,7 +1,10 @@
 import React from "react";
 import user from "../component/img/user.png";
+import Cookies from "js-cookie";
 
 function EditProfile() {
+  const getData = Cookies.get("fullname, email");
+
   return (
     <div className="bg-gray-100 py-20">
       <div className="w-9/12 mx-auto bg-white grid grid-cols-4 shadow-md p-5">
