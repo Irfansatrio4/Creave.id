@@ -9,6 +9,10 @@ function DefaultNavbar() {
   const history = useHistory();
 
   function logOut() {
+    swal({
+      title: "Log out berhasil",
+      icon: "success",
+    });
     Cookies.remove("token");
     window.location.reload();
     history.push("/");

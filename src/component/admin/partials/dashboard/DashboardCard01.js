@@ -196,7 +196,9 @@ function DashboardCard01() {
                         <div className="text-center">{req.status}</div>
                       </td>
                       <td className="p-2 whitespace-nowrap">
-                        <div className="text-center">photo</div>
+                        <div className="text-center">
+                          <a href={req.provePayment.url}>Photo</a>
+                        </div>
                       </td>
                       <td className="p-2 whitespace-nowrap text-center">
                         <button

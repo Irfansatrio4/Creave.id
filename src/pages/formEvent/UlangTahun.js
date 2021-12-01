@@ -59,6 +59,11 @@ function UlangTahun() {
     axios
       .post("https://creaveid-api.herokuapp.com/api/admin/addBirthday", hasil)
       .then(() => {
+        swal({
+          title: "Proses pemesanan berhasil",
+          text: "Pemesanan Anda akan dicek oleh admin",
+          icon: "success",
+        });
         console.log(hasil);
         history.push("/");
         swal({
@@ -70,6 +75,14 @@ function UlangTahun() {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const disablePastDate = () => {
+    const today = new Date();
+    const dd = String(today.getDate() + 1).padStart(2, "0");
+    const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+    const yyyy = today.getFullYear();
+    return yyyy + "-" + mm + "-" + dd;
   };
 
   return (
@@ -99,6 +112,7 @@ function UlangTahun() {
                       name="date"
                       value={date}
                       onChange={(e) => setdate(e.target.value)}
+                      min={disablePastDate()}
                     ></input>
                   </div>
                   <div className="w-full">

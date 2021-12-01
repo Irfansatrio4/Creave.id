@@ -20,8 +20,7 @@ function TableVendor() {
       .post(`https://creaveid-api.herokuapp.com/api/admin/deleteVendor/${id}`)
       .then((response) => {
         swal({
-          title: "Berhasil Dihapus",
-          text: "Data vendor berhasil dihapus",
+          title: "Data berhasil dihapus !",
           icon: "warning",
         });
         console.log(response);
