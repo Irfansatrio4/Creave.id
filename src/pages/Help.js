@@ -7,10 +7,10 @@ function Help() {
     <div>
       <DefaultNavbar />
       <div className="min-h-screen bg-gray-100 pt-10 pb-20">
-        <div className="container-xl mx-auto  text-center font-bold text-4xl bg-gray-100 pt-10">
+        <div className="container-xl mx-auto  text-center font-bold lg:text-4xl md:text-2xl bg-gray-100 pt-10">
           <p>Syarat dan Ketentuan</p>
         </div>
-        <div className="container-xl flex  mx-auto w-9/12 text-justify text-xl bg-gray-100 mt-10">
+        <div className="container-xl flex  mx-auto w-9/12 text-justify lg:text-xl md:text-lg bg-gray-100 mt-10">
           <div className="pr-3">1. </div>
           <div>
             <p>
@@ -21,7 +21,7 @@ function Help() {
             </p>
           </div>
         </div>
-        <div className="container-xl flex mx-auto w-9/12 text-justify text-xl bg-gray-100 mt-5">
+        <div className="container-xl flex mx-auto w-9/12 text-justify lg:text-xl md:text-lg bg-gray-100 mt-5">
           <div className="pr-3">2. </div>
           <div>
             <p>
@@ -32,7 +32,7 @@ function Help() {
             </p>
           </div>
         </div>
-        <div className="container-xl flex mx-auto w-9/12 text-justify text-xl bg-gray-100 mt-5">
+        <div className="container-xl flex mx-auto w-9/12 text-justify lg:text-xl md:text-lg bg-gray-100 mt-5">
           <div className="pr-3">3. </div>
           <div>
             <p>
@@ -42,7 +42,7 @@ function Help() {
             </p>
           </div>
         </div>
-        <div className="container-xl flex mx-auto w-9/12 text-justify text-xl bg-gray-100 mt-5">
+        <div className="container-xl flex mx-auto w-9/12 text-justify lg:text-xl md:text-lg bg-gray-100 mt-5">
           <div className="pr-3">4. </div>
           <div>
             <p>
@@ -52,7 +52,7 @@ function Help() {
             </p>
           </div>
         </div>
-        <div className="container-xl flex mx-auto w-9/12 text-justify text-xl bg-gray-100 mt-5">
+        <div className="container-xl flex mx-auto w-9/12 text-justify lg:text-xl md:text-lg bg-gray-100 mt-5">
           <div className="pr-3">5. </div>
           <div>
             <p>
@@ -61,7 +61,7 @@ function Help() {
             </p>
           </div>
         </div>
-        <div className="container-xl flex mx-auto w-9/12 text-justify text-xl bg-gray-100 mt-5">
+        <div className="container-xl flex mx-auto w-9/12 text-justify lg:text-xl md:text-lg bg-gray-100 mt-5">
           <div className="pr-3">6. </div>
           <div>
             <p>
@@ -70,17 +70,22 @@ function Help() {
             </p>
           </div>
         </div>
-        <div className="container-xl flex mx-auto w-9/12 text-justify text-xl bg-gray-100 mt-5">
+        <div className="container-xl flex mx-auto w-9/12 text-justify lg:text-xl md:text-lg bg-gray-100 mt-5">
           <div className="pr-3">7. </div>
           <div>
             <p>
               Proses pemesanan Anda sudah disetujui oleh admin. Anda harus
-              mengupload bukti pembayaran sesuai dengan harga yang tertera
+              melakukan pembayaran ke no Rekening :
+              <ul className="font-bold">
+                <li>Bank BCA(1408101800) a.n Creave.id Solusi Event</li>
+                <li>Bank Mandiri(1408101800) a.n Creave.id Solusi Event</li>
+              </ul>
+              Lalu mengupload bukti pembayaran sesuai dengan harga yang tertera
               ketika melakukan proses kustomisasi acara Anda.
             </p>
           </div>
         </div>
-        <div className="container-xl flex mx-auto w-9/12 text-justify text-xl bg-gray-100 mt-5">
+        <div className="container-xl flex mx-auto w-9/12 text-justify lg:text-xl md:text-lg bg-gray-100 mt-5">
           <div className="pr-3">8. </div>
           <div>
             <p>
