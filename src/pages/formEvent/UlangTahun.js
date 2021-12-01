@@ -4,6 +4,7 @@ import DefaultFooter from "../../component/DefaultFooter";
 import DefaultNavbar from "../../component/DefaultNavbar";
 import Cookies from "js-cookie";
 import axios from "axios";
+import swal from "sweetalert";
 
 function UlangTahun() {
   const history = useHistory();
@@ -60,6 +61,11 @@ function UlangTahun() {
       .then(() => {
         console.log(hasil);
         history.push("/");
+        swal({
+          title: "Pesanan Berhasil Ditambahkan",
+          text: "Data anda sudah masuk",
+          icon: "success",
+        });
       })
       .catch((error) => {
         console.log(error);

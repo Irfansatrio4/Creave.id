@@ -8,6 +8,7 @@ import ModalBody from "@material-tailwind/react/ModalBody";
 import ModalFooter from "@material-tailwind/react/ModalFooter";
 import Button from "@material-tailwind/react/Button";
 import { useParams } from "react-router";
+import swal from "sweetalert";
 
 function Table() {
   const [user, setUser] = useState([]);
@@ -30,6 +31,11 @@ function Table() {
       .post(`https://creaveid-api.herokuapp.com/api/user/${bukti}/${id}`, data)
       .then((response) => {
         console.log(response);
+        swal({
+          title: "Bukti Pembayaran Sudah Diterima",
+          text: "Tunggu admin kami menghubungin anda",
+          icon: "success",
+        });
       })
       .catch((err) => {
         console.log(err);

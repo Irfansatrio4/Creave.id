@@ -2,6 +2,7 @@ import React from "react";
 import { useHistory } from "react-router";
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import swal from "sweetalert";
 
 function TambahVendor() {
   const history = useHistory();
@@ -14,6 +15,11 @@ function TambahVendor() {
       .then((response) => {
         console.log(response);
         history.push("/admin/vendor");
+        swal({
+          title: "Berhasil Ditambahkan",
+          text: "Data vendor berhasil ditambahkan",
+          icon: "success",
+        });
       })
       .catch((error) => {
         console.log(error);

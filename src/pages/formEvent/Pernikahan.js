@@ -4,6 +4,7 @@ import DefaultFooter from "../../component/DefaultFooter";
 import DefaultNavbar from "../../component/DefaultNavbar";
 import Cookies from "js-cookie";
 import axios from "axios";
+import swal from "sweetalert";
 
 function Pernikahan() {
   const history = useHistory();
@@ -61,6 +62,11 @@ function Pernikahan() {
       .post("https://creaveid-api.herokuapp.com/api/admin/addWedding", hasil)
       .then(() => {
         // console.log(response)
+        swal({
+          title: "Pesanan Berhasil Ditambahkan",
+          text: "Data anda sudah masuk",
+          icon: "success",
+        });
         history.push("/");
       })
       .catch((error) => {

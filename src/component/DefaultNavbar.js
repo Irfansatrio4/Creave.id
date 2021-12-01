@@ -2,14 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../component/img/logonav.png";
 import Cookies from "js-cookie";
+import { useHistory } from "react-router";
 
 function DefaultNavbar() {
   const loged = Cookies.get("token");
-  
+  const history = useHistory();
 
   function logOut() {
     Cookies.remove("token");
     window.location.reload();
+    history.push("/");
   }
   return loged ? (
     <nav className="w-full sticky top-0 z-20  py-5 bg-white shadow-md">
