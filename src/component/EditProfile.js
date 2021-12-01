@@ -3,7 +3,9 @@ import user from "../component/img/user.png";
 import Cookies from "js-cookie";
 
 function EditProfile() {
-  const getData = Cookies.get("fullname, email");
+  const getData = Cookies.get("fullname");
+  const getNumber = Cookies.get("phone_number");
+  const getEmail = Cookies.get("email");
 
   return (
     <div className="bg-gray-100 py-20">
@@ -13,20 +15,14 @@ function EditProfile() {
         </div>
         <div className=" grid grid-rows-3 items-center col-span-2">
           <div className="flex  text-4xl text-black font-bold ">
-            <p> Full Name </p>
+            <p>{getData}</p>
           </div>
-          <div className="flex text-justify text-black ">
-            <p>username</p>
-          </div>
-          <div className="flex gap-5 bg-blue-200 rounded-lg mr-10">
-            <div>
-              <p>081290880571</p>
+          <div className="flex gap-5 bg-blue-200 rounded-lg mr-52">
+            <div className="pl-10">
+              <p> {getNumber} </p>
             </div>
             <div>
-              <p>SinaMustopa@gmail.com</p>
-            </div>
-            <div>
-              <p>Perum Indogreen Blok E5</p>
+              <p>{getEmail}</p>
             </div>
           </div>
         </div>

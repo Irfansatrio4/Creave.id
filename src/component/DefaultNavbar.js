@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "../component/img/logonav.png";
 import Cookies from "js-cookie";
 import { useHistory } from "react-router";
+import swal from "sweetalert";
 
 function DefaultNavbar() {
   const loged = Cookies.get("token");
@@ -14,9 +15,10 @@ function DefaultNavbar() {
       icon: "success",
     });
     Cookies.remove("token");
-    window.location.reload();
+    // window.location.reload();
     history.push("/");
   }
+
   return loged ? (
     <nav className="w-full sticky top-0 z-20  py-5 bg-white shadow-md">
       <div className="w-4/5 mx-auto flex justify-between items-center">

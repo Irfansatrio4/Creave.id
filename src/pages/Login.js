@@ -21,6 +21,7 @@ function Login() {
         });
         Cookies.set("fullname", response.data.others.fullname);
         Cookies.set("phone_number", response.data.others.phone_number);
+        Cookies.set("email", response.data.others.email);
         Cookies.set("token", response.data.accessToken);
         history.push("/");
         console.log(response);
