@@ -2,22 +2,32 @@ import React from "react";
 import { useHistory } from "react-router";
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import swal from "sweetalert";
 
 function TambahGaleri() {
   const history = useHistory();
   const { register, handleSubmit } = useForm();
 
   const addGaleri = (data) => {
-    console.log(data);
-    // axios
-    //   .post("https://creaveid-api.herokuapp.com/api/admin/addGallery", data)
-    //   .then((response) => {
-    //     console.log(response.data);
-    //     history.push("/admin/addgaleri");
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    const formData = new FormData();
+    formData.append("title", data.title);
+    formData.append("description", data.description);
+    formData.append("date", data.date);
+    formData.append("imageCover", data.imageCover[0]);
+
+    axios
+      .post("https://creaveid-api.herokuapp.com/api/admin/addGallery", formData)
+      .then(() => {
+        console.log(...formData);
+        history.push("/admin/addgaleri");
+        swal({
+          title: "Galeri Berhasil Ditambahkan",
+          icon: "success",
+        });
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
   };
 
   return (
@@ -29,7 +39,7 @@ function TambahGaleri() {
         </header>
         <div className="p-3">
           {/* Table */}
-          <form onSubmit={handleSubmit(addGaleri)}>
+          <form>
             <div className="overflow-x-auto">
               <div className="App">
                 <div className="grid gap-y-4 p-8">
@@ -227,7 +237,7 @@ function TambahGaleri() {
                   </button>
                   <button
                     className="hover:shadow-md text-gray-800 bg-blue-900 font-bold mr-4 py-2 px-4 rounded items-center content-center"
-                    type="submit"
+                    onClick={handleSubmit(addGaleri)}
                   >
                     <span className="text-white">Simpan</span>
                   </button>
