@@ -77,8 +77,8 @@ function Help() {
               Proses pemesanan Anda sudah disetujui oleh admin. Anda harus
               melakukan pembayaran ke no Rekening :
               <ul className="font-bold">
-                <li>Bank BCA(1408101800) a.n Creave.id Solusi Event</li>
-                <li>Bank Mandiri(1408101800) a.n Creave.id Solusi Event</li>
+                <li>Bank BCA(1408101800) a.n Creave.id </li>
+                <li>Bank Mandiri(1408101800) a.n Creave.id</li>
               </ul>
               Lalu mengupload bukti pembayaran sesuai dengan harga yang tertera
               ketika melakukan proses kustomisasi acara Anda.

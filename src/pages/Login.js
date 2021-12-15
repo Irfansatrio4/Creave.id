@@ -11,7 +11,6 @@ function Login() {
   let history = useHistory();
   const { register, handleSubmit } = useForm();
   const handleLogin = (data) => {
-    // console.log(data);
     axios
       .post("https://creaveid-api.herokuapp.com/api/user/login", data)
       .then((response) => {
@@ -23,7 +22,12 @@ function Login() {
         Cookies.set("phone_number", response.data.others.phone_number);
         Cookies.set("email", response.data.others.email);
         Cookies.set("token", response.data.accessToken);
-        history.push("/");
+        Cookies.set("isAdmin", response.data.others.isAdmin);
+        if (Cookies.get("isAdmin") === "true") {
+          history.push("/admin/home");
+        } else {
+          history.push("/");
+        };
         console.log(response);
       })
       .catch((error) => {

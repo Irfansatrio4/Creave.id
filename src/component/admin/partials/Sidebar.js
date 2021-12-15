@@ -1,13 +1,27 @@
 import React, { useEffect, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import Cookies from "js-cookie";
+import swal from "sweetalert";
+import { useHistory } from "react-router";
 
 function Sidebar({ sidebarOpen, setSidebarOpen }) {
   const location = useLocation();
   const { pathname } = location;
   const page = pathname.split("/")[1];
+  const history = useHistory();
 
   const trigger = useRef(null);
   const sidebar = useRef(null);
+
+  function logOut() {
+    swal({
+      title: "Log out berhasil",
+      icon: "success",
+    });
+    Cookies.remove("token");
+    // window.location.reload();
+    history.push("/");
+  }
 
   // close on click outside
   useEffect(() => {
@@ -259,9 +273,8 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                 page === "settings" && "bg-gray-900"
               }`}
             >
-              <NavLink
-                exact
-                to="/admin/vendor"
+              <button
+                onClick={logOut}
                 className={`block text-gray-200 hover:text-white transition duration-150 ${
                   page === "settings" && "hover:text-gray-200"
                 }`}
@@ -298,7 +311,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                   </svg>
                   <span className="text-sm font-medium">Log Out</span>
                 </div>
-              </NavLink>
+              </button>
             </li>
           </ul>
         </div>

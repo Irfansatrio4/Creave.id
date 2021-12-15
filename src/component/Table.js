@@ -160,22 +160,23 @@ function Table() {
           </ModalHeader>
           <form onSubmit={addPayment}>
             <ModalBody>
+              <ul>
+                <li>Mohon melakukan pembayaran pada rekening dibawah ini : </li>
+                <li className="font-bold mt-7">
+                  Bank BCA(1408101800) a.n Creave.id{" "}
+                </li>
+                <li className="font-bold mb-10">
+                  Bank Mandiri(1408101800) a.n Creave.id{" "}
+                </li>
+              </ul>
               <input
+                className="mb-7"
                 type="file"
                 name="provePayment"
                 onChange={(e) => setImage(e.target.files[0])}
               ></input>
             </ModalBody>
             <ModalFooter>
-              <Button
-                color="red"
-                buttonType="link"
-                onClick={(e) => setShowModal(false)}
-                ripple="dark"
-              >
-                Close
-              </Button>
-
               <Button
                 color="green"
                 onClick={(e) => setShowModal(false)}
