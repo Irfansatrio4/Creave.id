@@ -3,7 +3,6 @@ import HeaderNav from "../component/Login/HeaderNav";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
-
 import swal from "sweetalert";
 
 function Register() {
@@ -108,7 +107,7 @@ function Register() {
                 type="password"
                 className="w-full p-2 border border-gray-300 rounded mt-1"
                 name="password"
-                {...register("password", { required: true })}
+                {...register("password", { required: true , min:(8)})}
               />
             </div>
             <div>

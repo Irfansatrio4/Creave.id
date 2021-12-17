@@ -20,8 +20,12 @@ import detailUltah from "./pages/admin/DetailUltah";
 import detailPernikahan from "./pages/admin/DetailPernikahan";
 import detailWebinar from "./pages/admin/DetailWebinar";
 import detailGallery from "./pages/detailGallery";
+import Cookies from "js-cookie";
 
 function App() {
+  const loged = Cookies.get("token");
+  const isAdmin = Cookies.get("isAdmin");
+
   return (
     <Router>
       <Switch>
@@ -34,26 +38,48 @@ function App() {
         <Route exact path="/detailgallery/:id" component={detailGallery} />
         <Route exact path="/admin" component={Home} />
         <Route exact path="/event" component={listEvent} />
-        <Route exact path="/event/pernikahan" component={pernikahan} />
-        <Route exact path="/event/ultah" component={ulangTahun} />
-        <Route exact path="/event/webinar" component={webinar} />
-        <Route exact path="/admin/home" component={Home} />
-        <Route exact path="/admin/addgaleri" component={addGaleri} />
-        <Route exact path="/admin/addgaleri/form" component={FormGaleri} />
-        <Route exact path="/admin/vendor/form" component={FormVendor} />
-        <Route exact path="/admin/vendor" component={Vendor} />
         <Route exact path="/profile" component={Profile} />
         <Route
           exact
-          path="/admin/webinar/detail/:id"
-          component={detailWebinar}
+          path="/event/pernikahan"
+          component={loged ? pernikahan : Landing}
         />
         <Route
           exact
-          path="/admin/pernikahan/detail/:id"
-          component={detailPernikahan}
+          path="/event/ultah"
+          component={loged ? ulangTahun : Landing}
         />
-        <Route exact path="/admin/ultah/detail/:id" component={detailUltah} />
+        <Route
+          exact
+          path="/event/webinar"
+          component={loged ? webinar : Landing}
+        />
+        {isAdmin === "true" && loged ? (
+          <>
+            <Route exact path="/admin/home" component={Home} />
+            <Route exact path="/admin/addgaleri" component={addGaleri} />
+            <Route exact path="/admin/addgaleri/form" component={FormGaleri} />
+            <Route exact path="/admin/vendor/form" component={FormVendor} />
+            <Route exact path="/admin/vendor" component={Vendor} />
+            <Route
+              exact
+              path="/admin/webinar/detail/:id"
+              component={detailWebinar}
+            />
+            <Route
+              exact
+              path="/admin/pernikahan/detail/:id"
+              component={detailPernikahan}
+            />
+            <Route
+              exact
+              path="/admin/ultah/detail/:id"
+              component={detailUltah}
+            />
+          </>
+        ) : (
+          <p>error</p>
+        )}
       </Switch>
     </Router>
   );

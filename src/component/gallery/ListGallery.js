@@ -7,25 +7,29 @@ import moment from "moment";
 export default function ListGallery() {
   const [list, setList] = useState([]);
   useEffect(() => {
+    let isSubscribed = true;
     axios
       .get("https://creaveid-api.herokuapp.com/api/admin/gallery")
       .then((response) => {
-        setList(response.data.response);
-        console.log(list);
+        if (isSubscribed) {
+          setList(response.data.response);
+          console.log(list);
+        }
       })
       .catch((err) => {
         console.log(err);
       });
-  });
+    return () => (isSubscribed = false);
+  }, []);
   return (
     <div className="bg-gray-100">
       <div className="text-center text-4xl text-black font-bold pb-20 pt-24">
         <p> Gallery Creave.id</p>
       </div>
       <div className="mx-64 grid grid-cols-3 gap-10 justify-items-center pb-32">
-        {list.map((galeri) => {
+        {list.map((galeri, index) => {
           return (
-            <Link to={`/detailgallery/${galeri._id}`}>
+            <Link key={index} to={`/detailgallery/${galeri._id}`}>
               <div>
                 <div key={galeri._id}></div>
                 <img

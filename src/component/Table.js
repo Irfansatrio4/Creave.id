@@ -32,9 +32,9 @@ function Table() {
       .then((response) => {
         console.log(response);
         swal({
-          title: "Bukti Pembayaran Sudah Diterima",
+          title: response.data.message,
           text: "Tunggu admin kami menghubungin anda",
-          icon: "success",
+          // icon: "success",
         });
       })
       .catch((err) => {

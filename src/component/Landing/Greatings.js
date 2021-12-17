@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "@material-tailwind/react/Image";
+import greetingImage from "../img/wedding_vector 1.svg";
 
 
 export default function Greatings() {
@@ -7,10 +7,8 @@ export default function Greatings() {
     <div className="bg-gray-100 ">
       <div className="container mx-auto w-11/12 grid grid-cols-2  grid-row-2 items-center pt-10">
         <div className=" justify-self-center">
-          <Image
-            src="assets/img/wedding_vector 1.svg"
-            rounded={false}
-            raised={false}
+          <img
+            src={greetingImage}
             alt="Image"
           />
         </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import HeaderNav from "../component/Login/HeaderNav";
-import Image from "@material-tailwind/react/Image";
+import login from "../component/img/login 1.svg";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
@@ -22,12 +22,13 @@ function Login() {
         Cookies.set("phone_number", response.data.others.phone_number);
         Cookies.set("email", response.data.others.email);
         Cookies.set("token", response.data.accessToken);
+        localStorage.setItem("token", response.data.accessToken);
         Cookies.set("isAdmin", response.data.others.isAdmin);
         if (Cookies.get("isAdmin") === "true") {
           history.push("/admin/home");
         } else {
           history.push("/");
-        };
+        }
         console.log(response);
       })
       .catch((error) => {
@@ -48,13 +49,7 @@ function Login() {
           <div className="max-w-md w-full mx-auto mt-4 bg-white p-8 border border-gray-300">
             <div className="text-center font-medium text-xl"> Masuk </div>
             <div className=" flex justify-center mt-5 mb-5">
-              <Image
-                src="assets/img/Login 1.svg"
-                rounded={false}
-                raised={false}
-                alt="Image"
-                className="content-center"
-              />
+              <img src={login} alt="Image" className="content-center" />
             </div>
             <form
               action=""

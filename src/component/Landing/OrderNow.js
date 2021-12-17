@@ -2,6 +2,7 @@ import React from "react";
 import Image from "@material-tailwind/react/Image";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import order from "../img/birthday_vector 1.svg";
 
 export default function OrderNow() {
   const history = useHistory();
@@ -9,10 +10,8 @@ export default function OrderNow() {
     <div>
       <div className=" container mx-auto grid grid-cols-2 grid-row-2 items-center pt-10 w-11/12">
         <div className=" justify-self-center">
-          <Image
-            src="assets/img/birthday_vector 1.svg"
-            rounded={false}
-            raised={false}
+          <img
+            src={order}
             alt="Image"
           />
         </div>
